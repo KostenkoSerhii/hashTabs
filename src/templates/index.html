@@ -1,0 +1,32 @@
+---
+title: Index page
+---
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+<div class="container">
+	<div class="tabs">
+		<ul class="tabs__nav">
+			<li><a class="link-js" href="#tab1">tab1</a></li>
+			<li><a class="link-js" href="#tab2">tab2</a></li>
+			<li><a class="link-js" href="#tab3">tab3</a></li>
+			<li><a class="link-js" href="#tab4">tab4</a></li>
+		</ul>
+		<div class="tabs__content">
+		<div class="tabs__item" id="tab1">
+				Tab 1 content
+			</div>
+			<div class="tabs__item" id="tab2">
+				Tab 2 content
+			</div>
+			<div class="tabs__item" id="tab3">
+				Tab 3 content
+			</div>
+			<div class="tabs__item" id="tab4">
+				Tab 4 content
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
