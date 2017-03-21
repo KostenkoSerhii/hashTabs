@@ -2755,11 +2755,11 @@ $(document).ready(function () {
 	var $navLinks = $(".link-js");
 	var $contentBlocks = $(".tabs__item");
 
-	$navLinks.on("click", function (e) {
-		e.preventDefault();
-		window.location.hash = $(this).attr("href");
-		//console.log(window.location);
-	});
+	//$navLinks.on("click", function(e){
+	//	var tempHash = window.location.hash.slice(1);
+	//	e.preventDefault();
+	//	window.location.hash = $(this).attr("href");
+	//});
 
 	$(window).on('hashchange', function () {
 		hash = window.location.hash.slice(1);
@@ -2784,6 +2784,6 @@ $(document).ready(function () {
 
 	function changeContent(hash) {
 		$contentBlocks.removeClass("is-visible");
-		$("[id *=" + hash + "]").addClass("is-visible");
+		$("[data-id *=" + hash + "]").addClass("is-visible");
 	};
 });
