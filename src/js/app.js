@@ -22,6 +22,7 @@ $(document).ready(function(){
 	});
 	
 	compareHash()
+	
 	function compareHash(){
 		if(!hash){
 			changeNav("tab1");
