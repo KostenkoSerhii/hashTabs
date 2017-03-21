@@ -2752,39 +2752,38 @@ function sayHello() {
 sayHello();
 $(document).ready(function () {
 	var hash = window.location.hash.slice(1);
-	var navLinks = $(".link-js");
-	var contentBlocks = $(".tabs__item");
-	console.log(hash);
-	$(window).on('hashchange', function () {
-		hash = window.location.hash.slice(1);
-		if (!hash) {
-			toggleNav("tab1");
-			toggleContent("tab1");
-		} else {
-			toggleNav(hash);
-			toggleContent(hash);
-		};
+	var $navLinks = $(".link-js");
+	var $contentBlocks = $(".tabs__item");
+
+	$navLinks.on("click", function (e) {
+		e.preventDefault();
+		window.location.hash = $(this).attr("href");
+		//console.log(window.location);
 	});
 
-	if (!hash) {
-		toggleNav("tab1");
-		toggleContent("tab1");
-	} else {
-		toggleNav(hash);
-		toggleContent(hash);
+	$(window).on('hashchange', function () {
+		hash = window.location.hash.slice(1);
+		compareHash();
+	});
+
+	compareHash();
+	function compareHash() {
+		if (!hash) {
+			changeNav("tab1");
+			changeContent("tab1");
+		} else {
+			changeNav(hash);
+			changeContent(hash);
+		};
 	};
 
-	function toggleNav(hash) {
-		navLinks.removeClass("active").each(function () {
-			var href = $(this).attr("href").slice(1);
-			if (href == hash) $(this).addClass("active");
-		});
+	function changeNav(hash) {
+		$navLinks.removeClass("active");
+		$("[href *=" + hash + "]").addClass("active");
 	};
 
-	function toggleContent(hash) {
-		contentBlocks.removeClass("is-visible").each(function () {
-			var tabId = $(this).attr("id");
-			if (tabId == hash) $(this).addClass("is-visible");
-		});
+	function changeContent(hash) {
+		$contentBlocks.removeClass("is-visible");
+		$("[id *=" + hash + "]").addClass("is-visible");
 	};
 });
